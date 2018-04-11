@@ -1,0 +1,47 @@
+<md-content class="md-padding" layout="column" layout-wrap layout-padding>
+    <form name="userForm" ng-submit="$ctrl.saveUser()">
+        <div layout="column">
+            <md-input-container class="md-block">
+                <label>Nombre</label>
+                <input required type="string" name="nombre" ng-model="$ctrl.user.nombre" />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Apellido</label>
+                <input required type="string" name="apellidos" ng-model="$ctrl.user.apellidos" />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Usuario(email)</label>
+                <input required type="email" name="email" ng-model="$ctrl.user.email" />
+                <div ng-messages="userForm.email.$error" md-auto-hide="false">
+                    <div ng-message="email">
+                        Introduce correo válido
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Contraseña</label>
+                <input required type="password" name="password" ng-model="$ctrl.user.password" minlength="6" />
+                <div ng-messages="userForm.password.$error" md-auto-hide="false">
+                    <div ng-message="minlength">
+                        Tiene que tener al menos 6
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Repetir contraseña</label>
+                <input required type="password" name="confirmPassword" ng-model="$ctrl.user.confirmPassword" required validateEqual="password"
+                    #confirmPassword="ng-model" />
+                <div ng-messages="userForm.confirmPassword.$error" md-auto-hide="false">
+                    <div ng-message="validateEqual">
+                        Las contraseñas no coinciden
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Aceptar terminos y condiciones</label>
+                <input required checked type="checkbox" name="accept" ng-model="$ctrl.user.accept" />
+            </md-input-container>
+            <md-button class="md-primary" type="submit">Registrar</md-button>
+
+    </form>
+</md-content>
