@@ -16,10 +16,10 @@ export class AddUserCtrl {
         let self = this;
         this.userService.create(this.user)
             .then(function () {
-                //self.state.go('userlist')
-                
+
             })
     };
+
 }
 
 

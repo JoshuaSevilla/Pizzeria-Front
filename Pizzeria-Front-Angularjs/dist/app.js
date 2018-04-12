@@ -89879,9 +89879,9 @@ ngFileUpload$1.service('UploadExif', ['UploadResize', '$q', function (UploadResi
   return upload;
 }]);
 
-var angular$1 = angular_1;
+const angular$1 = angular_1;
 
-var App = angular$1.module('pizza-shop', ['ui.router', 'ngMaterial', 'ngMessages', 'ngFileUpload']);
+const App = angular$1.module('pizza-shop', ['ui.router', 'ngMaterial', 'ngMessages', 'ngFileUpload']);
 
 config.$inject = ["$urlRouterProvider"];
 function config(urlRouterProvider) {
@@ -89906,121 +89906,23 @@ function config$1(stateProvider) {
 }
 App.config(config$1);
 
-var classCallCheck = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-var createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
-
-
-
-
-
-
-var get = function get(object, property, receiver) {
-  if (object === null) object = Function.prototype;
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent === null) {
-      return undefined;
-    } else {
-      return get(parent, property, receiver);
-    }
-  } else if ("value" in desc) {
-    return desc.value;
-  } else {
-    var getter = desc.get;
-
-    if (getter === undefined) {
-      return undefined;
-    }
-
-    return getter.call(receiver);
-  }
-};
-
-var inherits = function (subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-};
-
-
-
-
-
-
-
-
-
-
-
-var possibleConstructorReturn = function (self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-};
-
-var PizzalistCtrl = function () {
-    function PizzalistCtrl(pizzaService) {
-        classCallCheck(this, PizzalistCtrl);
-
+class PizzalistCtrl {
+    constructor(pizzaService) {
         this.pizzaService = pizzaService;
         this.pizzas = [];
         this.getPizzas();
     }
-
-    createClass(PizzalistCtrl, [{
-        key: 'getPizzas',
-        value: function getPizzas() {
-            var _this = this;
-            this.pizzaService.getAll().then(function (c) {
-                return _this.pizzas = c.data;
-            });
-        }
-    }]);
-    return PizzalistCtrl;
-}();
+    getPizzas() {
+        let _this = this;
+        this.pizzaService.getAll().then(c => _this.pizzas = c.data);
+    }
+}
 PizzalistCtrl.$inject = ['pizzaService'];
 App.controller('pizzaListCtrl', PizzalistCtrl);
 
 var html = "<md-content class=\"md-padding\" layout=\"column\" layout-gt-sm=\"row\" layout-wrap>\r\n    <div flex-gt-sm=\"50\" flex-gt-md=\"33\" ng-repeat=\"pizza in $ctrl.pizzas\">\r\n        <md-card class=\"md-button pizza-card\" ui-sref=\"pizzas({id: pizza.id})\">\r\n            <md-card-title>\r\n                <md-card-title-text>\r\n                    <span class=\"md-seccondary\">{{pizza.name}}</span>\r\n                </md-card-title-text>\r\n            </md-card-title>\r\n            <img ng-src=\"{{pizza.img}}\" class=\"md-card-image\">\r\n        </md-card>\r\n</md-content>";
 
-var ilPizzaList = {
+const ilPizzaList = {
     controller: 'pizzaListCtrl',
     template: html
 };
@@ -90028,7 +89930,7 @@ App.component('ilPizzaList', ilPizzaList);
 
 var html$1 = "<md-card class=\"pizza-card\">\r\n    <img ng-src=\"{{$ctrl.img}}\" class=\"md-card-image\">\r\n    <md-card-title>\r\n        <md-card-title-text>\r\n            <span class=\"md-headline\" style=\"text-align: center\">{{ $ctrl.name | capitalize }}</span>\r\n        </md-card-title-text>\r\n    </md-card-title>\r\n</md-card>";
 
-var ilPizzaCard = {
+const ilPizzaCard = {
   template: html$1,
   bindings: {
     name: "@",
@@ -90040,7 +89942,7 @@ App.component('ilPizzaCard', ilPizzaCard);
 
 var html$2 = "<md-list layout-padding flex>\r\n    <div class=\"md-title\">Comments</div>\r\n    <md-list-item class=\"md-3-line\" ng-repeat=\"comment in $ctrl.comments\">\r\n        <div class=\"md-list-item-text\">\r\n            <h3>{{ comment.user }}: {{ comment.score }}</h3>\r\n            <h4>{{ comment.created }}</h4>\r\n            <p>{{ comment.text }}</p>\r\n        </div>\r\n    </md-list-item>\r\n</md-list>";
 
-var ilCommentList = {
+const ilCommentList = {
     template: html$2,
     bindings: {
         comments: "<"
@@ -90050,7 +89952,7 @@ App.component('ilCommentList', ilCommentList);
 
 var html$3 = "    \r\n<md-list layout-padding >\r\n    <div class=\"md-title\">Ingredients</div>\r\n    <md-list-item class=\"md-3-line\" ng-repeat=\"ingredient in $ctrl.ingredients\">\r\n        <div class=\"md-list-item-text\">\r\n            <h3>{{ ingredient.name | capitalize }}:</h3>\r\n            <p>{{ ingredient.prize }}$</p>\r\n        </div>\r\n    </md-list-item>\r\n</md-list>";
 
-var ilIngredientList = {
+const ilIngredientList = {
     template: html$3,
     bindings: {
         ingredients: "<"
@@ -90070,10 +89972,8 @@ function config$2(stateProvider) {
 
 App.config(config$2);
 
-var PizzaDetailsCtrl = function () {
-    function PizzaDetailsCtrl(state, pizzaService, commentService) {
-        classCallCheck(this, PizzaDetailsCtrl);
-
+class PizzaDetailsCtrl {
+    constructor(state, pizzaService, commentService) {
         this.state = state;
         this.pizzaService = pizzaService;
         this.commentService = commentService;
@@ -90089,62 +89989,51 @@ var PizzaDetailsCtrl = function () {
         };
         this.config();
     }
-
-    createClass(PizzaDetailsCtrl, [{
-        key: "config",
-        value: function config() {
-            var _this = this;
-            this.pizzaService.get(this.id).then(function (response) {
-                var data = response.data;
-                _this.name = data.name;
-                _this.img = data.img;
-                _this.ingredients = data.ingredients;
-                _this.comments = data.comments;
-            });
-        }
-    }, {
-        key: "hasIngredients",
-        value: function hasIngredients() {
-            return this.ingredients && this.ingredients.length > 0;
-        }
-    }, {
-        key: "hasComments",
-        value: function hasComments() {
-            return this.comments && this.comments.length > 0;
-        }
-    }, {
-        key: "submitComment",
-        value: function submitComment() {
-            this.comment.date = new Date();
-            this.comment.text = this.comment.text || "";
-            this.comment.pizza = parseInt(this.id);
-            this.comment.user = "Unknown";
-            this.commentService.create(this.comment).then(this.state.reload());
-        }
-    }]);
-    return PizzaDetailsCtrl;
-}();
+    config() {
+        let _this = this;
+        this.pizzaService.get(this.id).then(response => {
+            let data = response.data;
+            _this.name = data.name;
+            _this.img = data.img;
+            _this.ingredients = data.ingredients;
+            _this.comments = data.comments;
+        });
+    }
+    hasIngredients() {
+        return this.ingredients && this.ingredients.length > 0;
+    }
+    hasComments() {
+        return this.comments && this.comments.length > 0;
+    }
+    submitComment() {
+        this.comment.date = new Date();
+        this.comment.text = this.comment.text || "";
+        this.comment.pizza = parseInt(this.id);
+        this.comment.user = "Unknown";
+        this.commentService.create(this.comment).then(this.state.reload());
+    }
+}
 PizzaDetailsCtrl.$inject = ['$state', 'pizzaService', 'commentService'];
 App.controller('pizzaDetailsCtrl', PizzaDetailsCtrl);
 
 var html$4 = "<md-content class=\"md-padding\" layout-xs=\"column\" layout=\"row\">\n    <div layout=\"column\">\n        <il-pizza-card name=\"{{$ctrl.name}}\" img=\"{{$ctrl.img}}\"></il-pizza-card>\n        <md-content layout-padding>\n            <form name=\"commentForm\" ng-submit=\"$ctrl.submitComment()\">\n                <md-input-container class=\"md-block\">\n                    <label>Score</label>\n                    <input required type=\"number\" step=\"any\" name=\"score\" ng-model=\"$ctrl.comment.score\" min=\"0\" max=\"10\" />\n                    <div ng-messages=\"commentForm.score.$error\" multiple md-auto-hide=\"false\">\n                        <div ng-message=\"required\">\n                            You've got to put a score!\n                        </div>\n                        <div ng-message=\"min\">\n                            You should score at least 0.\n                        </div>\n                        <div ng-message=\"max\">\n                            That's a little ridiculous.\n                        </div>\n                    </div>\n                </md-input-container>\n                <md-input-container class=\"md-block\">\n                    <textarea name=\"text\" ng-model=\"$ctrl.comment.text\" md-maxlength=\"150\"></textarea>\n                </md-input-container>\n                <div>\n                    <md-button type=\"submit\">Submit</md-button>\n                </div>\n            </form>\n        </md-content>\n        <il-comment-list comments=$ctrl.comments ng-show=\"$ctrl.hasComments()\"></il-comment-list>\n    </div>\n    <div layout=\"row\" flex>\n        <il-ingredient-list ingredients=$ctrl.ingredients ng-show=\"$ctrl.hasIngredients()\"></il-ingredient-list>\n    </div>\n</md-content>";
 
-var ilPizzaDetails = {
+const ilPizzaDetails = {
     controller: 'pizzaDetailsCtrl',
     template: html$4
 };
 App.component('ilPizzaDetails', ilPizzaDetails);
 
-var ilImgViewer = function ilImgViewer() {
+const ilImgViewer = function () {
     return {
         restrict: 'A',
-        link: function link(scope, element, attrs) {
-            var input = document.querySelectorAll('[il-img-viewer]')[1];
-            var preview = document.getElementById('preview');
+        link: function (scope, element, attrs) {
+            let input = document.querySelectorAll('[il-img-viewer]')[1];
+            let preview = document.getElementById('preview');
             if (input && preview) {
-                var handler = function handler() {
+                let handler = function () {
                     if (input.files && input.files[0]) {
-                        var reader = new FileReader();
+                        let reader = new FileReader();
                         reader.onload = function (e) {
                             preview.setAttribute('src', e.target.result);
                         };
@@ -90163,7 +90052,7 @@ App.directive('ilImgViewer', ilImgViewer);
 
 var html$5 = "<div layout=\"row\">\r\n    <div>\r\n        <div class=\"md-button md-primary\" type=\"file\" il-img-viewer ngf-select ng-required ng-model=\"$ctrl.pizza.img\" name=\"file\" ngf-max-size=\"2MB\"\r\n            ngf-resize=\"{width: 296, height: 296}\">\r\n            Upload Image\r\n        </div>\r\n        <label class=\"md-subhead\">{{$ctrl.pizza.img.$ngfName}}</label>\r\n        <div>\r\n            <img id=\"preview\" />\r\n        </div>\r\n    </div>\r\n</div>";
 
-var ilImgUploader = {
+const ilImgUploader = {
   template: html$5,
   bindings: {
     pizza: '='
@@ -90182,10 +90071,8 @@ function config$3(stateProvider) {
 }
 App.config(config$3);
 
-var AddPizzaCtrl = function () {
-    function AddPizzaCtrl(state, pizzaService) {
-        classCallCheck(this, AddPizzaCtrl);
-
+class AddPizzaCtrl {
+    constructor(state, pizzaService) {
         this.pizzaService = pizzaService;
         this.state = state;
         this.ingredients = null;
@@ -90195,120 +90082,100 @@ var AddPizzaCtrl = function () {
             img: null
         };
     }
+    savePizza() {
+        let self = this;
+        this.pizzaService.create(this.pizza).then(function () {
+            self.state.go('pizzalist');
+        });
+    }
 
-    createClass(AddPizzaCtrl, [{
-        key: 'savePizza',
-        value: function savePizza() {
-            var self = this;
-            this.pizzaService.create(this.pizza).then(function () {
-                self.state.go('pizzalist');
-            });
-        }
-    }]);
-    return AddPizzaCtrl;
-}();
+}
 AddPizzaCtrl.$inject = ['$state', 'pizzaService'];
 App.controller('addPizzaCtrl', AddPizzaCtrl);
 
 var html$6 = "<md-content class=\"md-padding\" layout=\"column\" layout-wrap layout-padding>\r\n    <form name=\"pizzaForm\" ng-submit=\"$ctrl.savePizza()\">\r\n        <div layout=\"column\">\r\n            <md-input-container class=\"md-block\">\r\n                <label>Pizza:</label>\r\n                <input required type=\"string\" name=\"name\" ng-model=\"$ctrl.pizza.name\" />\r\n                <div ng-messages=\"pizzaForm.name.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"required\">\r\n                        You've got to put a name!\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n            <md-input-container>\r\n                <label>Ingredients:</label>\r\n                <il-ingredient-selector pizza=\"$ctrl.pizza\"> </il-ingredient-selector>\r\n            </md-input-container>\r\n        </div>\r\n        <il-img-uploader pizza=\"$ctrl.pizza\"></il-img-uploader>\r\n        <div layout=\"row\">\r\n            <md-button class=\"md-primary\" type=\"submit\">Submit</md-button>\r\n        </div>\r\n    </form>\r\n</md-content>";
 
-var ilAddPizza = {
+const ilAddPizza = {
     controller: 'addPizzaCtrl',
     template: html$6
 };
 App.component('ilAddPizza', ilAddPizza);
 
-var URL = 'http://localhost:49319';
+const URL = 'http://localhost:49319';
 App.constant('URL', URL);
 
-var resolveUrl = function resolveUrl(URL) {
+const resolveUrl = function (URL) {
     return {
-        getRoute: function getRoute(path) {
-            return URL + '/' + path;
+        getRoute: function (path) {
+            return `${URL}/${path}`;
         },
-        getRouteById: function getRouteById(path, id) {
-            return this.getRoute(path) + '/' + id;
+        getRouteById: function (path, id) {
+            return `${this.getRoute(path)}/${id}`;
         }
     };
 };
 App.factory('resolveUrl', resolveUrl);
 
-var BaseService = function () {
-    function BaseService(http, resolveUrl, path) {
-        classCallCheck(this, BaseService);
-
+class BaseService {
+    constructor(http, resolveUrl, path, tokenpath) {
         this.http = http;
         this.resolveUrl = resolveUrl;
         this.path = path;
+        this.tokenpath = tokenpath;
+    }
+    getRoute() {
+        return this.resolveUrl.getRoute(this.path);
+    }
+    getRouteById(id) {
+        return this.resolveUrl.getRouteById(this.path, id);
+    }
+    getRouteToken() {
+        return this.resolveUrl.getRoute(this.tokenpath);
+    }
+}
+
+class PizzaService extends BaseService {
+    constructor(http, resolveUrl) {
+        super(http, resolveUrl, 'pizzas');
     }
 
-    createClass(BaseService, [{
-        key: 'getRoute',
-        value: function getRoute() {
-            return this.resolveUrl.getRoute(this.path);
-        }
-    }, {
-        key: 'getRouteById',
-        value: function getRouteById(id) {
-            return this.resolveUrl.getRouteById(this.path, id);
-        }
-    }]);
-    return BaseService;
-}();
-
-var PizzaService = function (_BaseService) {
-    inherits(PizzaService, _BaseService);
-
-    function PizzaService(http, resolveUrl) {
-        classCallCheck(this, PizzaService);
-        return possibleConstructorReturn(this, (PizzaService.__proto__ || Object.getPrototypeOf(PizzaService)).call(this, http, resolveUrl, 'pizzas'));
+    get(id) {
+        return this.http.get(super.getRouteById(id));
     }
+    getAll() {
+        return this.http.get(super.getRoute());
+    }
+    create(pizza) {
+        // in the development database (json-server)
+        // we do not store the images
+        if (pizza.img) delete pizza.img;
+        return this.http.post(super.getRoute(), pizza);
 
-    createClass(PizzaService, [{
-        key: 'get',
-        value: function get$$1(id) {
-            return this.http.get(get(PizzaService.prototype.__proto__ || Object.getPrototypeOf(PizzaService.prototype), 'getRouteById', this).call(this, id));
-        }
-    }, {
-        key: 'getAll',
-        value: function getAll() {
-            return this.http.get(get(PizzaService.prototype.__proto__ || Object.getPrototypeOf(PizzaService.prototype), 'getRoute', this).call(this));
-        }
-    }, {
-        key: 'create',
-        value: function create(pizza) {
-            // in the development database (json-server)
-            // we do not store the images
-            if (pizza.img) delete pizza.img;
-            return this.http.post(get(PizzaService.prototype.__proto__ || Object.getPrototypeOf(PizzaService.prototype), 'getRoute', this).call(this), pizza);
-
-            /*
-            return this.http({
-                method: 'POST',
-                // set content-type to undefined so it is automatically selected
-                headers: { 'Content-Type': undefined },
-                url: super.getRoute(),
-                data: {
-                    name: pizza.name,
-                    ingredients: pizza.ingredients,
-                    image: pizza.img,
-                },
-                transformRequest: function (data, headersGetter) {
-                    let formData = new FormData();
-                    angular.forEach(data, function (value, key) {
-                        if (key === 'image' && value) {
-                            formData.append(key, value, value.name);
-                        }
-                        else formData.append(key, value);
-                    });
-                    return formData;
-                }
-            });
-            */
-        }
-    }]);
-    return PizzaService;
-}(BaseService);
+        /*
+        return this.http({
+            method: 'POST',
+            // set content-type to undefined so it is automatically selected
+            headers: { 'Content-Type': undefined },
+            url: super.getRoute(),
+            data: {
+                name: pizza.name,
+                ingredients: pizza.ingredients,
+                image: pizza.img,
+            },
+            transformRequest: function (data, headersGetter) {
+                let formData = new FormData();
+                angular.forEach(data, function (value, key) {
+                    if (key === 'image' && value) {
+                        formData.append(key, value, value.name);
+                    }
+                    else formData.append(key, value);
+                });
+                return formData;
+            }
+        });
+        */
+    }
+}
 PizzaService.$inject = ['$http', 'resolveUrl'];
 App.service('pizzaService', PizzaService);
 
@@ -90322,10 +90189,8 @@ function config$4(stateProvider) {
 }
 App.config(config$4);
 
-var AddUserCtrl = function () {
-    function AddUserCtrl(state, userService) {
-        classCallCheck(this, AddUserCtrl);
-
+class AddUserCtrl {
+    constructor(state, userService) {
         this.userService = userService;
         this.state = state;
         this.user = {
@@ -90336,26 +90201,18 @@ var AddUserCtrl = function () {
             apellidos: null
         };
     }
-
-    createClass(AddUserCtrl, [{
-        key: 'saveUser',
-        value: function saveUser() {
-            var self = this;
-            this.userService.create(this.user).then(function () {
-                //self.state.go('userlist')
-
-            });
-        }
-    }]);
-    return AddUserCtrl;
-}();
+    saveUser() {
+        let self = this;
+        this.userService.create(this.user).then(function () {});
+    }
+}
 
 AddUserCtrl.$inject = ['$state', 'userService'];
 App.controller('addUserCtrl', AddUserCtrl);
 
-var html$7 = "<md-content class=\"md-padding\" layout=\"column\" layout-wrap layout-padding>\r\n    <form name=\"userForm\" ng-submit=\"$ctrl.saveUser()\">\r\n        <div layout=\"column\">\r\n            <md-input-container class=\"md-block\">\r\n                <label>Nombre</label>\r\n                <input required type=\"string\" name=\"nombre\" ng-model=\"$ctrl.user.nombre\" />\r\n            </md-input-container>\r\n            <md-input-container class=\"md-block\">\r\n                <label>Apellido</label>\r\n                <input required type=\"string\" name=\"apellidos\" ng-model=\"$ctrl.user.apellidos\" />\r\n            </md-input-container>\r\n            <md-input-container class=\"md-block\">\r\n                <label>Usuario(email)</label>\r\n                <input required type=\"email\" name=\"email\" ng-model=\"$ctrl.user.email\" />\r\n                <div ng-messages=\"userForm.email.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"email\">\r\n                        Introduce correo válido\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n            <md-input-container class=\"md-block\">\r\n                <label>Contraseña</label>\r\n                <input required type=\"password\" name=\"password\" ng-model=\"$ctrl.user.password\" minlength=\"6\" />\r\n                <div ng-messages=\"userForm.password.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"minlength\">\r\n                        Tiene que tener al menos 6\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n            <md-input-container class=\"md-block\">\r\n                <label>Repetir contraseña</label>\r\n                <input required type=\"password\" name=\"confirmPassword\" ng-model=\"$ctrl.user.confirmPassword\" required validateEqual=\"password\"\r\n                    #confirmPassword=\"ng-model\" />\r\n                <div ng-messages=\"userForm.confirmPassword.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"validateEqual\">\r\n                        Las contraseñas no coinciden\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n            <md-input-container class=\"md-block\">\r\n                <label>Aceptar terminos y condiciones</label>\r\n                <input required checked type=\"checkbox\" name=\"accept\" ng-model=\"$ctrl.user.accept\" />\r\n            </md-input-container>\r\n            <md-button class=\"md-primary\" type=\"submit\">Registrar</md-button>\r\n\r\n    </form>\r\n</md-content>";
+var html$7 = "<md-content class=\"md-padding\" layout=\"column\" layout-wrap layout-padding>\r\n    <form name=\"userForm\" ng-submit=\"$ctrl.saveUser()\">\r\n        <div layout=\"column\">\r\n            <md-input-container class=\"md-block\">\r\n                <label>Nombre</label>\r\n                <input required type=\"string\" name=\"nombre\" ng-model=\"$ctrl.user.nombre\" />\r\n            </md-input-container>\r\n\r\n            <md-input-container class=\"md-block\">\r\n                <label>Apellido</label>\r\n                <input required type=\"string\" name=\"apellidos\" ng-model=\"$ctrl.user.apellidos\" />\r\n            </md-input-container>\r\n\r\n            <md-input-container class=\"md-block\">\r\n                <label>Usuario(email)</label>\r\n                <input required type=\"email\" name=\"email\" ng-model=\"$ctrl.user.email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\" />\r\n                <div ng-messages=\"userForm.email.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"email\">\r\n                        Introduce correo estilo xyz@algo.com\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n\r\n            <md-input-container class=\"md-block\">\r\n                <label>Contraseña</label>\r\n                <input required id=\"password\" type=\"password\" name=\"password\" ng-model=\"$ctrl.user.password\" pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\"\r\n                    onchange=\"if(this.checkValidity()) form.password_two.pattern = this.value;\" />\r\n                <div ng-messages=\"userForm.password.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"pattern\">\r\n                        Tiene que tener al menos 6, una minúscula, una mayúscula\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n\r\n            <md-input-container class=\"md-block\">\r\n                <label>Repetir contraseña</label>\r\n                <input required id=\"password_two\" type=\"password\" name=\"confirmPassword\" ng-model=\"$ctrl.user.confirmPassword\" onchange=\"this.setCustomValidity(this.validity.patternMismatch ? 'Las contraseñas no coinciden' : '');\"\r\n                />\r\n\r\n            </md-input-container>\r\n\r\n            </script>\r\n\r\n            <md-input-container class=\"md-block\">\r\n                <label>Aceptar terminos y condiciones</label>\r\n                <input required checked type=\"checkbox\" name=\"accept\" ng-model=\"$ctrl.user.accept\" />\r\n            </md-input-container>\r\n\r\n            <md-button class=\"md-primary\" type=\"submit\">Registrar</md-button>\r\n\r\n    </form>\r\n</md-content>";
 
-var ilAddUser = {
+const ilAddUser = {
     controller: 'addUserCtrl',
     template: html$7
 };
@@ -90371,11 +90228,9 @@ function config$5(stateProvider) {
 }
 App.config(config$5);
 
-var LoginUserCtrl = function () {
-    function LoginUserCtrl(state, loginService) {
-        classCallCheck(this, LoginUserCtrl);
-
-        this.loginService = loginService;
+class LoginUserCtrl {
+    constructor(state, userService) {
+        this.userService = userService;
         this.state = state;
         this.user = {
             email: null,
@@ -90383,220 +90238,76 @@ var LoginUserCtrl = function () {
             grant_type: "password"
         };
     }
+    loginUser() {
+        let self = this;
+        this.userService.login(this.user).then(function () {});
+    }
+}
 
-    createClass(LoginUserCtrl, [{
-        key: 'loginUser',
-        value: function loginUser() {
-            var self = this;
-            this.loginService.login(this.user).then(function () {
-                //self.state.go('userlist')
-
-            });
-        }
-    }]);
-    return LoginUserCtrl;
-}();
-
-LoginUserCtrl.$inject = ['$state', 'loginService'];
+LoginUserCtrl.$inject = ['$state', 'userService'];
 App.controller('loginUserCtrl', LoginUserCtrl);
 
 var html$8 = "<md-content class=\"md-padding\" layout=\"column\" layout-wrap layout-padding>\r\n    <form name=\"userForm\" ng-submit=\"$ctrl.loginUser()\">\r\n        <div layout=\"column\">\r\n   <md-input-container class=\"md-block\">\r\n                <label>Usuario(email)</label>\r\n                <input required type=\"email\" name=\"email\" ng-model=\"$ctrl.user.email\" />\r\n                <div ng-messages=\"userForm.email.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"email\">\r\n                        Introduce correo válido\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n            <md-input-container class=\"md-block\">\r\n                <label>Contraseña</label>\r\n                <input required type=\"password\" name=\"password\" ng-model=\"$ctrl.user.password\" minlength=\"6\" />\r\n                <div ng-messages=\"userForm.password.$error\" md-auto-hide=\"false\">\r\n                    <div ng-message=\"minlength\">\r\n                        Tiene que tener al menos 6 carácteres\r\n                    </div>\r\n                </div>\r\n            </md-input-container>\r\n        <md-input-container>\r\n                <input required type=\"hidden\" name=\"grant_type\" value=\"password\" ng-model=\"$ctrl.user.grant_type\" />\r\n        </md-input-container>\r\n\r\n            <md-button class=\"md-primary\" type=\"submit\">Login</md-button>\r\n\r\n    </form>\r\n</md-content>";
 
-var ilLoginUser = {
+const ilLoginUser = {
     controller: 'loginUserCtrl',
     template: html$8
 };
 App.component('ilLoginUser', ilLoginUser);
 
-var UserService = function (_BaseService) {
-    inherits(UserService, _BaseService);
-
-    function UserService(http, resolveUrl) {
-        classCallCheck(this, UserService);
-        return possibleConstructorReturn(this, (UserService.__proto__ || Object.getPrototypeOf(UserService)).call(this, http, resolveUrl, 'api/Account/Register'));
+class UserService extends BaseService {
+    constructor(http, resolveUrl) {
+        super(http, resolveUrl, 'api/Account/Register', 'Token');
     }
 
-    createClass(UserService, [{
-        key: 'get',
-        value: function get$$1(id) {
-            return this.http.get(get(UserService.prototype.__proto__ || Object.getPrototypeOf(UserService.prototype), 'getRouteById', this).call(this, id));
-        }
-    }, {
-        key: 'getAll',
-        value: function getAll() {
-            return this.http.get(get(UserService.prototype.__proto__ || Object.getPrototypeOf(UserService.prototype), 'getRoute', this).call(this));
-        }
-    }, {
-        key: 'create',
-        value: function create(user) {
-            // in the development database (json-server)
-            // we do not store the images
-            if (user.img) delete user.img;
-            return this.http.post(get(UserService.prototype.__proto__ || Object.getPrototypeOf(UserService.prototype), 'getRoute', this).call(this), user);
+    get(id) {
+        return this.http.get(super.getRouteById(id));
+    }
 
-            $http({
-                method: 'POST',
-                url: get(UserService.prototype.__proto__ || Object.getPrototypeOf(UserService.prototype), 'getRoute', this).call(this),
-                //headers: { 'Content-Type': "application/x-www-form-urlencoded" },
-                data: JSON.stringify(this.user)
-            }).then(function successCallback(response) {
-                console.log('success');
-                respuesta = JSON.parse(response);
-            }, function errorCallback(response) {
-                console.log('error');
-                console.log(response);
-            });
+    getAll() {
+        return this.http.get(super.getRoute());
+    }
 
-            /*
-            return this.http({
-                method: 'POST',
-                // set content-type to undefined so it is automatically selected
-                headers: { 'Content-Type': undefined },
-                url: super.getRoute(),
-                data: {
-                    name: pizza.name,
-                    ingredients: pizza.ingredients,
-                    image: pizza.img,
-                },
-                transformRequest: function (data, headersGetter) {
-                    let formData = new FormData();
-                    angular.forEach(data, function (value, key) {
-                        if (key === 'image' && value) {
-                            formData.append(key, value, value.name);
-                        }
-                        else formData.append(key, value);
-                    });
-                    return formData;
-                }
-            });
-            */
-        }
-    }]);
-    return UserService;
-}(BaseService);
+    create(user) {
+        return this.http.post(super.getRoute(), user);
+    }
+
+    login(user) {
+        var data = "grant_type=password&username=" + user.email + "&password=" + user.password;
+        return this.http.post(super.getRouteToken(), data, { headers: { 'Content-Type': "application/x-www-form-urlencoded" } });
+    }
+}
 UserService.$inject = ['$http', 'resolveUrl'];
 App.service('userService', UserService);
 
-var LoginService = function (_BaseService) {
-    inherits(LoginService, _BaseService);
-
-    function LoginService(http, resolveUrl) {
-        classCallCheck(this, LoginService);
-        return possibleConstructorReturn(this, (LoginService.__proto__ || Object.getPrototypeOf(LoginService)).call(this, http, resolveUrl, 'Token'));
+class IngredientService extends BaseService {
+    constructor(http, resolveUrl) {
+        super(http, resolveUrl, 'ingredients');
     }
-
-    createClass(LoginService, [{
-        key: 'get',
-        value: function get$$1(id) {
-            return this.http.get(get(LoginService.prototype.__proto__ || Object.getPrototypeOf(LoginService.prototype), 'getRouteById', this).call(this, id));
-        }
-    }, {
-        key: 'getAll',
-        value: function getAll() {
-            return this.http.get(get(LoginService.prototype.__proto__ || Object.getPrototypeOf(LoginService.prototype), 'getRoute', this).call(this));
-        }
-    }, {
-        key: 'login',
-        value: function login(user) {
-            // in the development database (json-server)
-            // we do not store the images
-            if (user.img) delete user.img;
-
-            var data = "grant_type=password&username=" + user.email + "&password=" + user.password;
-
-            return this.http.post(get(LoginService.prototype.__proto__ || Object.getPrototypeOf(LoginService.prototype), 'getRoute', this).call(this), data, { headers: { 'Content-Type': "application/x-www-form-urlencoded" } });
-
-            var data = "grant_type=password&username=" + user.email + "&password=" + user.password;
-
-            $http({
-                method: 'POST',
-                url: get(LoginService.prototype.__proto__ || Object.getPrototypeOf(LoginService.prototype), 'getRoute', this).call(this),
-                headers: { 'Content-Type': "application/x-www-form-urlencoded" },
-                data: data
-
-            }).then(function successCallback(response) {
-                console.log('success');
-                respuesta = JSON.parse(response);
-            }, function errorCallback(response) {
-                console.log('error');
-                console.log(response);
-            });
-
-            /*
-            return this.http({
-                method: 'POST',
-                // set content-type to undefined so it is automatically selected
-                headers: { 'Content-Type': undefined },
-                url: super.getRoute(),
-                data: {
-                    name: pizza.name,
-                    ingredients: pizza.ingredients,
-                    image: pizza.img,
-                },
-                transformRequest: function (data, headersGetter) {
-                    let formData = new FormData();
-                    angular.forEach(data, function (value, key) {
-                        if (key === 'image' && value) {
-                            formData.append(key, value, value.name);
-                        }
-                        else formData.append(key, value);
-                    });
-                    return formData;
-                }
-            });
-            */
-        }
-    }]);
-    return LoginService;
-}(BaseService);
-LoginService.$inject = ['$http', 'resolveUrl'];
-App.service('loginService', LoginService);
-
-var IngredientService = function (_BaseService) {
-    inherits(IngredientService, _BaseService);
-
-    function IngredientService(http, resolveUrl) {
-        classCallCheck(this, IngredientService);
-        return possibleConstructorReturn(this, (IngredientService.__proto__ || Object.getPrototypeOf(IngredientService)).call(this, http, resolveUrl, 'ingredients'));
+    getAll() {
+        return this.http.get(super.getRoute());
     }
-
-    createClass(IngredientService, [{
-        key: 'getAll',
-        value: function getAll() {
-            return this.http.get(get(IngredientService.prototype.__proto__ || Object.getPrototypeOf(IngredientService.prototype), 'getRoute', this).call(this));
-        }
-    }]);
-    return IngredientService;
-}(BaseService);
+}
 IngredientService.$inject = ['$http', 'resolveUrl'];
 App.service('ingredientService', IngredientService);
 
 var html$9 = "<md-select ng-model=\"$ctrl.pizza.ingredients\" multiple>\r\n    <md-option ng-repeat=\"ingredient in $ctrl.ingredients\" ng-value=\"{{ingredient}}\">\r\n        {{ingredient.name}}\r\n    </md-option>\r\n</md-select>";
 
-var IngredientSelectorCtrl = function () {
-    function IngredientSelectorCtrl(ingredientService) {
-        classCallCheck(this, IngredientSelectorCtrl);
-
+class IngredientSelectorCtrl {
+    constructor(ingredientService) {
         this.ingredientService = ingredientService;
         this.ingredients = null;
         this.getIngredients();
     }
-
-    createClass(IngredientSelectorCtrl, [{
-        key: 'getIngredients',
-        value: function getIngredients() {
-            var _this = this;
-            this.ingredientService.getAll().then(function (response) {
-                return _this.ingredients = response.data;
-            });
-        }
-    }]);
-    return IngredientSelectorCtrl;
-}();
+    getIngredients() {
+        let _this = this;
+        this.ingredientService.getAll().then(response => _this.ingredients = response.data);
+    }
+}
 IngredientSelectorCtrl.$inject = ['ingredientService'];
 App.controller('ingredientSelectorCtrl', IngredientSelectorCtrl);
 
-var ilIngredientSelector = {
+const ilIngredientSelector = {
     template: html$9,
     controller: 'ingredientSelectorCtrl',
     bindings: {
@@ -90605,22 +90316,14 @@ var ilIngredientSelector = {
 };
 App.component('ilIngredientSelector', ilIngredientSelector);
 
-var CommentService = function (_BaseService) {
-    inherits(CommentService, _BaseService);
-
-    function CommentService(http, resolveUrl) {
-        classCallCheck(this, CommentService);
-        return possibleConstructorReturn(this, (CommentService.__proto__ || Object.getPrototypeOf(CommentService)).call(this, http, resolveUrl, 'comments'));
+class CommentService extends BaseService {
+    constructor(http, resolveUrl) {
+        super(http, resolveUrl, 'comments');
     }
-
-    createClass(CommentService, [{
-        key: 'create',
-        value: function create(comment) {
-            return this.http.post(get(CommentService.prototype.__proto__ || Object.getPrototypeOf(CommentService.prototype), 'getRoute', this).call(this), comment);
-        }
-    }]);
-    return CommentService;
-}(BaseService);
+    create(comment) {
+        return this.http.post(super.getRoute(), comment);
+    }
+}
 CommentService.$inject = ['$http', 'resolveUrl'];
 App.service('commentService', CommentService);
 
@@ -90635,7 +90338,7 @@ App.config(config$6);
 
 var html$10 = "<md-sidenav md-component-id=\"sidenav\" class=\"md-sidenav-left\" md-component-id=\"left\" style=\"position:fixed\" md-is-locked-open=\"$mdMedia('gt-sm')\"\r\n  md-whiteframe=\"4\">\r\n  <md-toolbar class=\"md-theme-indigo\">\r\n    <img src=\"img/pokepizza.png\" alt=\"Logo Pizzeria\" height=\"320\" width=\"320\">\r\n    <h1 class=\"md-toolbar-tools\">Pizzeria La Toscana</h1>\r\n  </md-toolbar>\r\n  <md-content layout=\"column\" layout-padding>\r\n    <md-button class=\"md-primary\" ui-sref=\"loginuser\" ng-click=\"$ctrl.closeSidenav()\">\r\n      Login\r\n    </md-button>\r\n    <md-button class=\"md-primary\" ui-sref=\"adduser\" ng-click=\"$ctrl.closeSidenav()\">\r\n      Registro\r\n    </md-button>\r\n    <md-button class=\"md-primary\" ui-sref=\"pizzalist\" ng-click=\"$ctrl.closeSidenav()\">\r\n      Mostrar pizzas\r\n    </md-button>\r\n    <md-button class=\"md-primary\" ui-sref=\"addpizza\" ng-click=\"$ctrl.closeSidenav()\">\r\n      Añadir pizza\r\n    </md-button>\r\n  </md-content>\r\n</md-sidenav>";
 
-var ilMenu = {
+const ilMenu = {
   template: html$10,
   bindings: {
     closeSidenav: "=",
@@ -90646,7 +90349,7 @@ App.component('ilMenu', ilMenu);
 
 var html$11 = "<md-toolbar layout-align=\"center center\" layout=\"row\" class=\"site-content-toolbar\" ng-show=\"$ctrl.isSidenavClosed()\">\r\n    <img src=\"img/menu.png\" class=\"md-icon-button md-button\" ng-click=\"$ctrl.openSidenav()\"></img>\r\n    <h1 class=\"md-toolbar-tools\">Pizzeria La Toscana</h1>\r\n</md-toolbar>";
 
-var ilToolBar = {
+const ilToolBar = {
     template: html$11,
     bindings: {
         isSidenavClosed: "=",
@@ -90658,42 +90361,31 @@ App.component('ilToolBar', ilToolBar);
 
 var html$12 = "<md-content flex layout-padding>\r\n  <div ui-view flex></div>\r\n</md-content>";
 
-var ilContent = {
+const ilContent = {
   template: html$12
 };
 App.component('ilContent', ilContent);
 
-var AppCtrl = function () {
-    function AppCtrl(mdSidenav) {
-        classCallCheck(this, AppCtrl);
-
+class AppCtrl {
+    constructor(mdSidenav) {
         this.mdSidenav = mdSidenav;
     }
-
-    createClass(AppCtrl, [{
-        key: "isSidenavClosed",
-        value: function isSidenavClosed() {
-            return !(this.mdSidenav("sidenav").isOpen() || this.mdSidenav("sidenav").isLockedOpen());
-        }
-    }, {
-        key: "openSidenav",
-        value: function openSidenav() {
-            this.mdSidenav("sidenav").toggle();
-        }
-    }, {
-        key: "closeSidenav",
-        value: function closeSidenav() {
-            this.mdSidenav("sidenav").close();
-        }
-    }]);
-    return AppCtrl;
-}();
+    isSidenavClosed() {
+        return !(this.mdSidenav("sidenav").isOpen() || this.mdSidenav("sidenav").isLockedOpen());
+    }
+    openSidenav() {
+        this.mdSidenav("sidenav").toggle();
+    }
+    closeSidenav() {
+        this.mdSidenav("sidenav").close();
+    }
+}
 AppCtrl.$inject = ['$mdSidenav'];
 App.controller('appCtrl', AppCtrl);
 
 var html$13 = "<div layout=\"column\" ng-cloak>\r\n    <section layout=\"row\" flex>\r\n        <il-menu close-sidenav=\"$ctrl.closeSidenav\" md-sidenav=\"$ctrl.mdSidenav\"></il-menu>\r\n        <div layout=\"column\" flex>\r\n            <il-tool-bar layout-align=\"center center\" layout=\"row\" class=\"site-content-toolbar\" is-sidenav-closed=\"$ctrl.isSidenavClosed\"\r\n                open-sidenav=\"$ctrl.openSidenav\" md-sidenav=\"$ctrl.mdSidenav\">\r\n            </il-tool-bar>\r\n            <il-content flex layout-padding class=\"content\"></il-content>\r\n        </div>\r\n    </section>\r\n</div>";
 
-var ilApp = {
+const ilApp = {
     template: html$13,
     controller: 'appCtrl'
 };
@@ -90713,7 +90405,6 @@ exports.PizzaService = PizzaService;
 exports.ilAddUser = ilAddUser;
 exports.ilLoginUser = ilLoginUser;
 exports.UserService = UserService;
-exports.LoginService = LoginService;
 exports.IngredientService = IngredientService;
 exports.ilIngredientSelector = ilIngredientSelector;
 exports.CommentService = CommentService;

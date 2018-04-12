@@ -8,3 +8,4 @@ export const ilAddUser = {
     template: html
 };
 App.component('ilAddUser', ilAddUser)
+
